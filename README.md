@@ -58,7 +58,34 @@ This project builds a deep learning system to classify chest X-ray images into m
 ---
 
 ## ▶️ Running the Project
-1. Clone the repository  
-2. Install dependencies using `pip install -r requirements.txt`  
-3. Place dataset in `COVID-19_Radiography_Dataset/`  
-4. Run `python chest_xray_ssl_training.py`
+1. Clone the repository
+
+2. Install dependencies
+
+`pip install -r requirements.txt`  
+
+3. Download the dataset
+
+Download the dataset from Kaggle:
+https://www.kaggle.com/datasets/tawsifurrahman/covid19-radiography-database
+
+Extract it and ensure the folder is named:
+`COVID-19_Radiography_Dataset/`  
+
+4. Folder structure
+
+Make sure your project looks like this.
+
+your-repo-name/
+│
+├── chest_xray_ssl_training.py
+├── requirements.txt
+├── COVID-19_Radiography_Dataset/
+│   ├── COVID/
+│   ├── NORMAL/
+│   ├── VIRAL PNEUMONIA/
+│   ├── LUNG OPACITY/
+
+5. Run the project
+
+`python chest_xray_ssl_training.py`
