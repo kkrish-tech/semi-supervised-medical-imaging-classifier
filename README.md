@@ -83,4 +83,4 @@ Make sure your project follows the same folder structure as shown in the reposit
 
 ### 5. Run the project
 
-`python chest_xray_ssl_training.py`
+`python Chest_Xray_SSL_Training.py`
