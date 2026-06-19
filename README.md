@@ -27,13 +27,40 @@ This project builds a deep learning system to classify chest X-ray images into m
 ---
 
 ## ⚙️ The Process
-- Dataset preparation and image preprocessing  
-- CNN model development using PyTorch  
-- Training a supervised baseline model  
-- Adding semi-supervised learning with pseudo-labeling  
-- Filtering low-confidence predictions  
-- Model evaluation and performance comparison  
-- Visualization of results using metrics and plots  
+1. Dataset Preparation  
+• Loaded the COVID-19 Radiography Dataset  
+• Organized chest X-ray images into labeled categories (COVID-19, Normal, Pneumonia, Lung Opacity)  
+• Sampled a subset of images to simulate a limited-data scenario  
+
+2. Image Preprocessing  
+• Resized all images to a fixed resolution  
+• Normalized pixel values for consistent CNN input  
+• Applied basic augmentation to improve generalization  
+
+3. Supervised Model Training  
+• Built a Convolutional Neural Network (CNN) using PyTorch  
+• Trained the model using only labeled data  
+• Established baseline performance for comparison  
+
+4. Semi-Supervised Setup  
+• Split training data into labeled and unlabeled sets  
+• Used the trained model to generate pseudo-labels for unlabeled data  
+
+5. Pseudo-Label Filtering  
+• Applied confidence thresholding to remove low-confidence predictions  
+• Kept only reliable pseudo-labels for training  
+
+6. Model Training with Unlabeled Data  
+• Combined labeled data with high-confidence pseudo-labels  
+• Retrained the CNN to improve performance using additional data  
+
+7. Evaluation & Comparison  
+• Evaluated models using accuracy, F1-score, confusion matrix, and ROC curves  
+• Compared supervised vs semi-supervised performance  
+
+8. Visualization of Results  
+• Generated confusion matrices for class-wise performance  
+• Plotted ROC curves to analyze classification quality  
 
 ---
 
