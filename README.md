@@ -76,6 +76,7 @@ Extract it and ensure the folder is named:
 
 Make sure your project looks like this.
 
+`
 your-repo-name/
 │
 ├── chest_xray_ssl_training.py
@@ -85,7 +86,7 @@ your-repo-name/
 │   ├── NORMAL/
 │   ├── VIRAL PNEUMONIA/
 │   ├── LUNG OPACITY/
-
+`
 5. Run the project
 
 `python chest_xray_ssl_training.py`
