@@ -61,6 +61,9 @@ This project builds a deep learning system to classify chest X-ray images into m
 
 ### 1. Clone the repository
 
+`git clone https://github.com/your-username/your-repo-name.git`
+`cd your-repo-name`
+
 ### 2. Install dependencies
 
 `pip install -r requirements.txt`  
