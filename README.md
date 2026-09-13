@@ -24,7 +24,7 @@ This project builds a deep learning system to classify chest X-ray images into m
 
 * **Core & Frameworks:** Python, PyTorch, Torchvision
 * **Data & Image Processing:** NumPy, Pillow (PIL), Torchvision Transforms
-* **Model Evaluation & Viz:** Scikit-learn, Matplotlib, Seaborn
+* **Model Evaluation & Visualization:** Scikit-learn, Matplotlib, Seaborn
 
 ---
 
