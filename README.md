@@ -5,82 +5,61 @@ This project builds a deep learning system to classify chest X-ray images into m
 
 ---
 
-## 🛠️ Technologies Used
-- Python  
-- PyTorch  
-- TorchVision  
-- Scikit-learn  
-- NumPy  
-- Matplotlib  
-- Pillow (PIL)  
+### 🛠️ Tech Stack
+
+* **Core & Frameworks:** Python, PyTorch, Torchvision
+* **Data & Image Processing:** NumPy, Pillow (PIL), Torchvision Transforms
+* **Model Evaluation & Viz:** Scikit-learn, Matplotlib, Seaborn
 
 ---
 
-## ✨ Features
-- Chest X-ray image classification (COVID-19, Pneumonia, Normal, Lung Opacity)  
-- CNN-based deep learning model  
-- Supervised baseline model  
-- Semi-supervised learning using pseudo-labeling  
-- Confidence-based filtering for unlabeled data  
-- Evaluation using Accuracy, F1-score, ROC-AUC, and Confusion Matrix  
+### 📌 Key Features
+
+* **Multi-Class Radiograph Classification:** Categorizes chest X-rays across four target classes: *COVID-19*, *Viral Pneumonia*, *Lung Opacity*, and *Normal*.
+* **Supervised Baseline Benchmark:** Establishes performance bounds using standard cross-entropy optimization on strictly labeled data splits.
+* **Confidence-Thresholded Pseudo-Labeling:** Filters pseudo-labeled samples via Softmax probability thresholds to prevent error propagation and noisy gradients during retraining.
+* **Comprehensive Evaluation Metrics:** Evaluates diagnostic performance via multiclass ROC-AUC curves, macro/micro F1-scores, precision/recall, and confusion matrices.
 
 ---
 
-## ⚙️ The Process
-1. Dataset Preparation  
-• Loaded the COVID-19 Radiography Dataset  
-• Organized chest X-ray images into labeled categories (COVID-19, Normal, Pneumonia, Lung Opacity)  
-• Sampled a subset of images to simulate a limited-data scenario  
+### ⚙️ The Pipeline
 
-2. Image Preprocessing  
-• Resized all images to a fixed resolution  
-• Normalized pixel values for consistent CNN input  
-• Applied basic augmentation to improve generalization  
+1. **Dataset Structuring & Data Augmentation**
+   * Preprocessed the *COVID-19 Radiography Dataset*, scaling images to unified spatial dimensions.
+   * Standardized pixel intensity channels and applied geometric transformations (random rotations, horizontal flips) to prevent overfitting.
+   * Split data to explicitly simulate realistic semi-supervised conditions (small labeled anchor set, large unlabeled pool).
 
-3. Supervised Model Training  
-• Built a Convolutional Neural Network (CNN) using PyTorch  
-• Trained the model using only labeled data  
-• Established baseline performance for comparison  
+2. **Supervised Baseline Initialization**
+   * Built and trained a deep Convolutional Neural Network backbone using labeled anchor images.
+   * Optimized using Cross-Entropy Loss and Adam optimizer to set comparative baseline metrics.
 
-4. Semi-Supervised Setup  
-• Split training data into labeled and unlabeled sets  
-• Used the trained model to generate pseudo-labels for unlabeled data  
+3. **Semi-Supervised Generation & Filtering**
+   * Executed inference over the unlabeled dataset split to generate predicted class probability distributions.
+   * Enforced a strict confidence cut-off threshold ($\tau$), discarding uncertain outputs and retaining only high-probability pseudo-labels.
 
-5. Pseudo-Label Filtering  
-• Applied confidence thresholding to remove low-confidence predictions  
-• Kept only reliable pseudo-labels for training  
+4. **Iterative Model Retraining**
+   * Concatenated ground-truth labeled samples with the newly accepted pseudo-labeled samples into an expanded training set.
+   * Retrained the CNN architecture on the combined distribution, boosting feature learning from unlabeled image patterns.
 
-6. Model Training with Unlabeled Data  
-• Combined labeled data with high-confidence pseudo-labels  
-• Retrained the CNN to improve performance using additional data  
-
-7. Evaluation & Comparison  
-• Evaluated models using accuracy, F1-score, confusion matrix, and ROC curves  
-• Compared supervised vs semi-supervised performance  
-
-8. Visualization of Results  
-• Generated confusion matrices for class-wise performance  
-• Plotted ROC curves to analyze classification quality  
+5. **Diagnostic Performance Benchmarking**
+   * Evaluated model generalization against a dedicated test set.
+   * Generated class-wise confusion matrices and ROC curves to measure performance gains between supervised vs. semi-supervised training.
 
 ---
 
-## 📚 What I Learned
-- Semi-supervised learning improves performance with limited labels  
-- Practical CNN implementation in PyTorch  
-- Importance of preprocessing in medical imaging  
-- Handling class imbalance in datasets  
-- Evaluation techniques for classification models  
-- Trade-offs between supervised and semi-supervised approaches  
+### 📚 What I Learned
+* **Label Efficiency:** Semi-supervised pseudo-labeling achieved performance comparable to fully supervised baselines while utilizing significantly fewer manual annotations.
+* **Threshold Sensitivity:** Highlighted the critical trade-off between pseudo-label volume and noise introduction; high confidence thresholds are vital to preventing target drift.
+* **Diagnostic Imbalance Handling:** Demonstrated the necessity of robust evaluation metrics (F1-Score, ROC-AUC) over raw accuracy when handling non-uniform clinical class distributions.
 
 ---
 
-## 🚀 How Can It Be Improved?
-- Use pretrained models like ResNet or EfficientNet  
-- Improve pseudo-labeling strategies (FixMatch, MixMatch)  
-- Add cross-validation for better evaluation  
-- Hyperparameter tuning for better performance  
-- Deploy as a web application (Flask/FastAPI)  
-- Add Grad-CAM for model interpretability  
+### 🚀 How Can It Be Improved?
+
+* **Backbone Upgrades:** Transition from custom CNN architectures to transfer learning backbones (ResNet-50, EfficientNet, or Vision Transformers).
+* **Advanced Semi-Supervised Methods:** Integrate state-of-the-art semi-supervised frameworks such as **FixMatch**, **MixMatch**, or **FlexMatch**.
+* **Model Explainability:** Integrate **Grad-CAM** heatmaps to visualize activation regions and validate clinical focus areas.
+* **Production Deployment:** Wrap the inference engine into a lightweight RESTful microservice using Flask/FastAPI and Docker.
 
 ---
 
