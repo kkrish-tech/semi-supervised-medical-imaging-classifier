@@ -1,11 +1,26 @@
 # 🩻 Chest X-Ray Classification with Semi-Supervised Learning
 
-## 📌 Project Overview
+[![Python](https://img.shields.io/badge/Python-3.8+-3776AB?style=flat&logo=python&logoColor=white)](https://www.python.org/)
+[![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat&logo=pytorch&logoColor=white)](https://pytorch.org/)
+[![Torchvision](https://img.shields.io/badge/Torchvision-EE4C2C?style=flat&logo=pytorch&logoColor=white)](https://pytorch.org/vision/stable/index.html)
+[![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-F7931E?style=flat&logo=scikit-learn&logoColor=white)](https://scikit-learn.org/)
+
+---
+
+### 💡 Core Problem & Approach
+
+Acquiring expert-annotated medical datasets is prohibitively expensive and time-consuming. This system addresses labeled data scarcity by initializing a supervised backbone on a minimal annotated subset, predicting soft target distributions for unlabeled radiographs, filtering out low-confidence predictions, and retraining the model on the augmented dataset.
+
+Labeled Images ──> Train Baseline CNN ──> Predict Unlabeled Images ──> Filter (Confidence > Threshold) ──> Train Combined Set ──> Final Retrained CNN
+
+---
+
+### 📌 Project Overview
 This project builds a deep learning system to classify chest X-ray images into medical categories such as COVID-19, pneumonia, and normal cases. It compares supervised learning with semi-supervised learning to show how unlabeled medical data can improve performance when labeled data is limited.
 
 ---
 
-### 🛠️ Tech Stack
+### 🛠️ Technologies Used
 
 * **Core & Frameworks:** Python, PyTorch, Torchvision
 * **Data & Image Processing:** NumPy, Pillow (PIL), Torchvision Transforms
